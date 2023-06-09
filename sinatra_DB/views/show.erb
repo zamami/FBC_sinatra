@@ -1,0 +1,12 @@
+
+<p class="font-weight-bold"><%= @memo[0]["title"] %></p>
+<p class="text-break" style="white-space:pre-wrap;"><%= @memo[0]["contents"] %></p>
+
+<form class="d-inline" method="get" action="/memos/<%= params[:id] %>/edit">
+  <button class="btn btn-primary" type="submit">更新</button>
+</form>
+
+<form class="d-inline" method="post" action="/memos/<%= params[:id] %>">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger" type="submit">削除</button>
+</form>
