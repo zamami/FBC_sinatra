@@ -82,6 +82,7 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    securerandom (0.2.2)
     sinatra (3.0.6)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
@@ -107,6 +108,7 @@ DEPENDENCIES
   pg
   puma
   rubocop-fjord
+  securerandom
   sinatra
   sinatra-contrib
 

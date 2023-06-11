@@ -18,8 +18,7 @@ helpers do
   def set_all_files
     files = Dir.glob('public/notes/*') # ファイル名を全て取得
     hash_datas = files.map do |file| # jsonデータをハッシュに変換
-      memo = File.open(file, 'r')
-      memo.read
+      File.read(file)
     end
     @files = hash_datas.map.each_with_index do |file_data, index|
       hash_data = JSON.parse(file_data)
@@ -29,9 +28,9 @@ helpers do
   end
 
   def make_json_file
-    time = Time.now.strftime('%Y%m%d_%H_%M_%S') # メモごとにファイルを保存
-    File.open("public/notes/#{time}_note.json", 'w') do |file| # 新規投稿フォームの内容をjsonに保存
-      hash = { 'id' => time, 'title' => params[:title], 'content' => params[:contents] }
+    id = Time.now.strftime('%Y%m%d_%H_%M_%S') # メモごとにファイルを保存
+    File.open("public/notes/#{id}_note.json", 'w') do |file| # 新規投稿フォームの内容をjsonに保存
+      hash = { id:, title: params[:title], content: params[:contents] }
       JSON.dump(hash, file)
     end
   end
@@ -69,7 +68,7 @@ get '/memos/:id/edit' do # 編集画面
 end
 
 patch '/memos/:id' do # 編集機能
-  file = File.open(set_file).read
+  file = File.read(set_file)
   update_file = JSON.parse(file)
   update_file['title'] = params['title']
   update_file['content'] = params['content']
