@@ -11,19 +11,9 @@ helpers do
     Rack::Utils.escape_html(text) # XSS対策
   end
 
-  def set_file
-    Dir.glob('public/notes/*')[params[:id].to_i - ID_NUMBER_ADJUSTMENT] # 削除するファイル名を取得
-  end
-
   def set_all_files
-    files = Dir.glob('public/notes/*') # ファイル名を全て取得
-    hash_datas = files.map do |file| # jsonデータをハッシュに変換
-      File.read(file)
-    end
-    @files = hash_datas.map.each_with_index do |file_data, index|
-      hash_data = JSON.parse(file_data)
-      hash_data['id'] = index + ID_NUMBER_ADJUSTMENT # idの値を１から始まる番号に変換
-      hash_data
+    @files = Dir.glob('public/notes/*').map do |file|
+      JSON.parse(File.read(file))
     end
   end
 
@@ -57,18 +47,18 @@ get '/memos/:id' do # 詳細画面
 end
 
 delete '/memos/:id' do # 削除機能
-  File.delete(set_file)
+  File.delete("public/notes/#{params[:id]}_note.json")
   redirect to('/memos')
 end
 
 get '/memos/:id/edit' do # 編集画面
-  edit_memo = File.open(set_file, 'r+').read
+  edit_memo = File.open("public/notes/#{params[:id]}_note.json", 'r+').read
   @edit_memo = JSON.parse(edit_memo)
   erb :edit_memo
 end
 
 patch '/memos/:id' do # 編集機能
-  file = File.read(set_file)
+  file = File.read("public/notes/#{params[:id]}_note.json")
   update_file = JSON.parse(file)
   update_file['title'] = params['title']
   update_file['content'] = params['content']
