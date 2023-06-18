@@ -1,5 +1,5 @@
 <% @files.each do |file| %>
-  <% if params[:id] == "#{file['id']}" %>
+  <% if params[:id].eql?(file['id']) %>
     <p class="font-weight-bold"><%= h(file["title"]) %></p>
     <p class="text-break" style="white-space:pre-wrap;"><%= h(file["content"]) %></p>
   <% end %>
