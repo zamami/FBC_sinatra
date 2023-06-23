@@ -2,7 +2,7 @@
 
 <%# メモのタイトルを全て表示する %>
 <% unless @all_memos.nil? %> <%# データが存在しているのか確認 %>
-  <% @all_memos.each_with_index do |memo,index| %>
-    <p><a class="list-group-item list-group-item-action" href="http://localhost:4567/memos/<%= index + @adjustment_index_num %>">•<%= memo['title'].empty? ? '[no_title]': memo['title'] %></a></p>
+  <% @all_memos.each do |memo| %>
+    <p><a class="list-group-item list-group-item-action" href="http://localhost:4567/memos/<%= memo['id'] %>">•<%= memo['title'].empty? ? '[no_title]': memo['title'] %></a></p>
   <% end %>
 <% end %>
