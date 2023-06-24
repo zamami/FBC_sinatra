@@ -1,9 +1,5 @@
-<% @files.each do |file| %>
-  <% if params[:id].eql?(file['id']) %>
-    <p class="font-weight-bold"><%= h(file["title"]) %></p>
-    <p class="text-break" style="white-space:pre-wrap;"><%= h(file["content"]) %></p>
-  <% end %>
-<% end %>
+<p class="font-weight-bold"><%= @memo["title"] %></p>
+<p class="text-break" style="white-space:pre-wrap;"><%= @memo["contents"] %></p>
 
 <form class="d-inline" method="get" action="/memos/<%= params[:id] %>/edit">
   <button class="btn btn-primary" type="submit">更新</button>
