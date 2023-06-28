@@ -5,20 +5,26 @@
 ![sinatra_memo_app.004.jpeg](https://bootcamp.fjord.jp/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMkFPQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--8b4e08e344cf79074924207eda0942626f520fb0/sinatra_memo_app.004.jpeg)
 
 # Requirement
-* ruby(3.2.2)
-* sinatra (3.0.6)
-* sinatra-contrib (3.0.6)
-* pg (1.5.3)
 * psql (PostgreSQL) 14.7
  
 # Installation
 
-1. PostgresSQL のデフォルトユーザーでsinatra_memo_appというデータベースを作成し、``` CREATE TABLE memos (id serial, title varchar(10), contents varchar(10), time timestamp);```を実行してください。
-3. git clone https://github.com/zamami/FBC_sinatraを実行して任意のディレクトリに複製して下さい。
+1. PostgresSQL のデフォルトユーザーでsinatra_memo_appというデータベースを作成し、
+```sql
+    CREATE TABLE memos (
+      id serial,
+      title varchar(50),
+      content varchar(200)　NOT NULL,,
+      create_time timestamp
+    );
+```
+を実行してください。
+3. ``` git clone https://github.com/zamami/FBC_sinatra```
+を実行して任意のディレクトリに複製して下さい。
 FBC_sinatraディレクトリに移動して下さい。
-4. bundle installを実行して下さい。Gemfile 記載のsinatra、sinatra-contrib、pgおよびthinがインストールされます。
-5. FBC_sinatraディレクトリでbundle exec ruby app.rbを実行してください。
-6. 任意のブラウザでhttp://localhost:4567/memosにアクセスしてください。
+4. ```bundle install```を実行して下さい。Gemfile 記載のsinatra、sinatra-contrib、pgおよびthinがインストールされます。
+5. FBC_sinatraディレクトリで```bundle exec ruby app.rb```を実行してください。
+6. 任意のブラウザで<http://localhost:4567/memos>にアクセスしてください。
 
 # Usage
 
