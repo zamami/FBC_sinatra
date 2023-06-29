@@ -14,7 +14,7 @@
     CREATE TABLE memos (
       id serial,
       title varchar(50),
-      content varchar(200)　NOT NULL,,
+      content varchar(200) NOT NULL,
       create_time timestamp
     );
 ```
