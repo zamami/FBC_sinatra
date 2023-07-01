@@ -15,8 +15,12 @@ post '/memos' do # 新規メモデータの受け取り
   title = params[:title]
   content = params[:content]
   time = Time.new
-  connection.exec_params('INSERT INTO memos(title, content, create_time) VALUES ($1, $2, $3)', [title, content, time])
-  redirect to('/memos')
+  if params[:content].empty?
+    redirect to('/memos/new')
+  else
+    connection.exec_params('INSERT INTO memos(title, content, create_time) VALUES ($1, $2, $3)', [title, content, time])
+    redirect to('/memos')
+  end
 end
 
 get '/memos/new' do # 新規登録
