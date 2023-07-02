@@ -1,5 +1,5 @@
-<form class="form" action="/memos/<%= params[:id] %>" method="post" enctype="multipart/form-data">
-<input type="hidden" name="_method" value="patch">
+<form class="form" action="/memos/<%= @memo['id'] %>" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="_method" value="patch">
   <div class="form-group">
     <label for="value1">タイトル</label>
     <input class="form-control" type="text" name="title" value="<%= @memo['title'] %>">

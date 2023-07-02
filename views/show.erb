@@ -1,11 +1,11 @@
-<p class="font-weight-bold"><%= @memo["title"] %></p>
-<p class="text-break"><%= @memo["content"] %></p>
+<p class="font-weight-bold"><%= @memo['title'] %></p>
+<p class="text-break"><%= @memo['content'] %></p>
 
-<form class="d-inline" method="get" action="/memos/<%= params[:id] %>/edit">
+<form class="d-inline" method="get" action="/memos/<%= @memo['id'] %>/edit">
   <button class="btn btn-primary" type="submit">更新</button>
 </form>
 
-<form class="d-inline" method="post" action="/memos/<%= params[:id] %>">
+<form class="d-inline" method="post" action="/memos/<%= @memo['id'] %>">
   <input type="hidden" name="_method" value="delete">
   <button class="btn btn-danger" type="submit">削除</button>
 </form>

@@ -19,12 +19,16 @@
     );
 ```
 を実行してください。
-3. ``` git clone https://github.com/zamami/FBC_sinatra```
+
+2. git clone https://github.com/zamami/FBC_sinatra
 を実行して任意のディレクトリに複製して下さい。
 FBC_sinatraディレクトリに移動して下さい。
-4. ```bundle install```を実行して下さい。Gemfile 記載のsinatra、sinatra-contrib、pgおよびthinがインストールされます。
-5. FBC_sinatraディレクトリで```bundle exec ruby app.rb```を実行してください。
-6. 任意のブラウザで<http://localhost:4567/memos>にアクセスしてください。
+
+3. ```bundle install```を実行して下さい。Gemfile 記載のsinatra、sinatra-contrib、pgおよびthinがインストールされます。
+
+4. FBC_sinatraディレクトリで```bundle exec ruby app.rb```を実行してください。
+
+5. 任意のブラウザで<http://localhost:4567/memos>にアクセスしてください。
 
 # Usage
 

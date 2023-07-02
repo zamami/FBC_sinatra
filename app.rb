@@ -42,7 +42,7 @@ end
 get '/memos/:id/edit' do # 編集画面
   sql = 'SELECT * FROM memos WHERE id = $1'
   @memo = connection.exec_params(sql, [params[:id]]).first
-  erb :edit_memo
+  erb :edit
 end
 
 patch '/memos/:id' do # 編集機能
