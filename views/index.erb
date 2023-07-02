@@ -1,6 +1,6 @@
 <a class="btn btn-primary list-group-item-action" href="/memos/new">追加</a>
 
 <%# メモのタイトルを全て表示する %>
-  <% @all_memos.each do |memo| %>
-    <p><a class="list-group-item list-group-item-action" href="/memos/<%= memo['id'] %>">•<%= memo['title'].empty? ? '[no_title]': memo['title'] %></a></p>
-  <% end %>
+<% @all_memos.each do |memo| %>
+  <p><a class="list-group-item list-group-item-action" href="/memos/<%= memo['id'] %>">•<%= memo['title'].empty? ? '[no_title]': h(memo['title']) %></a></p>
+<% end %>
