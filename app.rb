@@ -9,22 +9,19 @@ helpers do
     Rack::Utils.escape_html(text)
   end
 end
+
 connection = PG.connect(dbname: 'sinatra_memo_app')
 
 get '/memos' do # トップ画面
-  sql = 'SELECT * FROM memos ORDER BY create_time asc;'
+  sql = 'SELECT * FROM memos ORDER BY created_time ASC;'
   @all_memos = connection.exec(sql)
   erb :index
 end
 
 post '/memos' do # 新規メモデータの受け取り
-  if params[:content].empty?
-    redirect to('/memos/new')
-  else
-    sql = 'INSERT INTO memos(title, content, create_time) VALUES ($1, $2, $3)'
-    connection.exec_params(sql, [params[:title], params[:content], Time.new])
-    redirect to('/memos')
-  end
+  sql = 'INSERT INTO memos(title, content, created_time) VALUES ($1, $2, $3)'
+  connection.exec_params(sql, [params[:title], params[:content], Time.new])
+  redirect to('/memos')
 end
 
 get '/memos/new' do # 新規登録
