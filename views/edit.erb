@@ -1,5 +1,6 @@
 <form class="form" action="/memos/<%= @memo['id'] %>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="_method" value="patch">
+
   <div class="form-group">
     <label for="title">タイトル</label>
     <input class="form-control" type="text" name="title" value="<%= @memo['title'] %>" id="title">
@@ -7,7 +8,7 @@
 
   <div class="form-group">
     <label for="content">内容</label>
-    <textarea class="form-control" name="content" cols=50 rows=10 id="content" required><%= @memo['content'] %></textarea>
+    <textarea class="form-control" name="content" cols="50" rows="10" id="content" required><%= @memo['content'] %></textarea>
   </div>
 
   <input class="btn btn-primary" type="submit" value="保存">
